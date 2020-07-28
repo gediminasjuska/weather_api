@@ -1,0 +1,14 @@
+{
+  "name": "hard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html",
+    "install": "npm-git install"
+  },
+  "dependencies": {
+    "npm-git-install": "^0.3.0"
+  }
+}
