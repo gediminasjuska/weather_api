@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel index.html",
-    "install": "npm-git install"
+    "dev": "parcel index.html"
   },
-  "dependencies": {
-    "npm-git-install": "^0.3.0"
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
   }
 }
