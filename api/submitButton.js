@@ -1,5 +1,4 @@
 import {fetchData} from './fetchData.js'
-import {newCityWeather} from './newCityWeather.js'
 
 
 const cityName = document.querySelector('input')

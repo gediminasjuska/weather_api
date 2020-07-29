@@ -117,26 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"api/newCityWeather.js":[function(require,module,exports) {
-// import {fetchData} from './fetchData.js'
-// import {submitButton} from './submitButton.js'
-// const output = document.querySelector('.output')
-//         const newCityWeather = function(){
-//             fetchData(city)
-//                 output.innerHTML = ''
-//                 const cityInfo = document.createElement('div')
-//                 const deleteBtn = document.createElement('button')
-//                 const infoUl = document.createElement('ul')
-//                 const infoLi = document.createElement('li')
-//                 cityInfo.style.border = '2px solid purple'
-//                 infoLi.innerHTML = city
-//                 output.appendChild(cityInfo)
-//                 cityInfo.appendChild(deleteBtn)
-//                 cityInfo.appendChild(infoUl)
-//                 infoUl.appendChild(infoLi)
-//             }
-// export {newCityWeather}
-},{}],"api/submitButton.js":[function(require,module,exports) {
+})({"api/submitButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -145,8 +126,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.submitButton = void 0;
 
 var _fetchData = require("./fetchData.js");
-
-var _newCityWeather = require("./newCityWeather.js");
 
 var cityName = document.querySelector('input');
 var submitButton = document.querySelector('button');
@@ -164,7 +143,7 @@ cityName.addEventListener('keyup', function (event) {
     event.preventDefault();
   }
 });
-},{"./fetchData.js":"api/fetchData.js","./newCityWeather.js":"api/newCityWeather.js"}],"api/fetchData.js":[function(require,module,exports) {
+},{"./fetchData.js":"api/fetchData.js"}],"api/fetchData.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -173,8 +152,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.fetchData = void 0;
 
 var _submitButton = require("./submitButton.js");
-
-var _newCityWeather = require("./newCityWeather.js");
 
 var units = 'metric';
 var cityName = document.querySelector('input');
@@ -194,13 +171,11 @@ var fetchData = function fetchData() {
     var weather = JSON.parse(weather1);
     var weatherIcon = JSON.parse(weatherIcon1);
     var date = new Date();
-    var bandymasTemp = document.getElementById('demo').innerHTML = city + temp + weather + weatherIcon + date;
     var iconLink = "http://openweathermap.org/img/wn/".concat(weatherIcon, ".png");
     var weatherImage = document.createElement('img');
     var weatherImage1 = document.createElement('img');
     weatherImage.src = iconLink;
     weatherImage1.src = iconLink;
-    console.log(iconLink);
     var output = document.querySelector('.output');
 
     function newCityWeather() {
@@ -241,7 +216,26 @@ var fetchData = function fetchData() {
 };
 
 exports.fetchData = fetchData;
-},{"./submitButton.js":"api/submitButton.js","./newCityWeather.js":"api/newCityWeather.js"}],"index.js":[function(require,module,exports) {
+},{"./submitButton.js":"api/submitButton.js"}],"api/newCityWeather.js":[function(require,module,exports) {
+// import {fetchData} from './fetchData.js'
+// import {submitButton} from './submitButton.js'
+// const output = document.querySelector('.output')
+//         const newCityWeather = function(){
+//             fetchData(city)
+//                 output.innerHTML = ''
+//                 const cityInfo = document.createElement('div')
+//                 const deleteBtn = document.createElement('button')
+//                 const infoUl = document.createElement('ul')
+//                 const infoLi = document.createElement('li')
+//                 cityInfo.style.border = '2px solid purple'
+//                 infoLi.innerHTML = city
+//                 output.appendChild(cityInfo)
+//                 cityInfo.appendChild(deleteBtn)
+//                 cityInfo.appendChild(infoUl)
+//                 infoUl.appendChild(infoLi)
+//             }
+// export {newCityWeather}
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _fetchData = require("./api/fetchData.js");
@@ -277,7 +271,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61060" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65235" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

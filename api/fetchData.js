@@ -1,5 +1,4 @@
 import {submitButton} from './submitButton.js'
-import {newCityWeather} from './newCityWeather.js'
 const units = 'metric'
 const cityName = document.querySelector('input')
 
@@ -22,13 +21,11 @@ const fetchData = () => {
             let weatherIcon = JSON.parse(weatherIcon1)
 
             const date = new Date()
-            const bandymasTemp = document.getElementById('demo').innerHTML = city+temp+weather+weatherIcon+date
             const iconLink = `http://openweathermap.org/img/wn/${weatherIcon}.png`
             const weatherImage = document.createElement('img')
             const weatherImage1 = document.createElement('img')
             weatherImage.src = iconLink
             weatherImage1.src = iconLink
-            console.log(iconLink)
             
             const output = document.querySelector('.output')
             function newCityWeather(){
