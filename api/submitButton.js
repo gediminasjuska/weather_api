@@ -1,4 +1,5 @@
 import {fetchData} from './fetchData.js'
+import {newCityWeather} from './newCityWeather.js'
 
 
 const cityName = document.querySelector('input')
@@ -10,7 +11,6 @@ submitButton.addEventListener('click', function(){
     if(cityName.value == ""){
         alert('Neįvestas miesto pavadinimas!')
     }else {
-
     fetchData()
     }
 })

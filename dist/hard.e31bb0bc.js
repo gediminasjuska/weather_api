@@ -117,7 +117,26 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"api/submitButton.js":[function(require,module,exports) {
+})({"api/newCityWeather.js":[function(require,module,exports) {
+// import {fetchData} from './fetchData.js'
+// import {submitButton} from './submitButton.js'
+// const output = document.querySelector('.output')
+//         const newCityWeather = function(){
+//             fetchData(city)
+//                 output.innerHTML = ''
+//                 const cityInfo = document.createElement('div')
+//                 const deleteBtn = document.createElement('button')
+//                 const infoUl = document.createElement('ul')
+//                 const infoLi = document.createElement('li')
+//                 cityInfo.style.border = '2px solid purple'
+//                 infoLi.innerHTML = city
+//                 output.appendChild(cityInfo)
+//                 cityInfo.appendChild(deleteBtn)
+//                 cityInfo.appendChild(infoUl)
+//                 infoUl.appendChild(infoLi)
+//             }
+// export {newCityWeather}
+},{}],"api/submitButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -126,6 +145,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.submitButton = void 0;
 
 var _fetchData = require("./fetchData.js");
+
+var _newCityWeather = require("./newCityWeather.js");
 
 var cityName = document.querySelector('input');
 var submitButton = document.querySelector('button');
@@ -143,7 +164,7 @@ cityName.addEventListener('keyup', function (event) {
     event.preventDefault();
   }
 });
-},{"./fetchData.js":"api/fetchData.js"}],"api/fetchData.js":[function(require,module,exports) {
+},{"./fetchData.js":"api/fetchData.js","./newCityWeather.js":"api/newCityWeather.js"}],"api/fetchData.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -152,6 +173,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.fetchData = void 0;
 
 var _submitButton = require("./submitButton.js");
+
+var _newCityWeather = require("./newCityWeather.js");
 
 var units = 'metric';
 var cityName = document.querySelector('input');
@@ -162,27 +185,71 @@ var fetchData = function fetchData() {
   }).then(function (body) {
     var city1 = JSON.stringify(body.name);
     var temp1 = JSON.stringify(body.main.temp);
+    var humidity1 = JSON.stringify(body.main.humidity);
     var weather1 = JSON.stringify(body.weather[0].description);
     var weatherIcon1 = JSON.stringify(body.weather[0].icon);
     var city = JSON.parse(city1);
     var temp = JSON.parse(temp1);
+    var humidity = JSON.parse(humidity1);
     var weather = JSON.parse(weather1);
     var weatherIcon = JSON.parse(weatherIcon1);
     var date = new Date();
     var bandymasTemp = document.getElementById('demo').innerHTML = city + temp + weather + weatherIcon + date;
     var iconLink = "http://openweathermap.org/img/wn/".concat(weatherIcon, ".png");
+    var weatherImage = document.createElement('img');
+    var weatherImage1 = document.createElement('img');
+    weatherImage.src = iconLink;
+    weatherImage1.src = iconLink;
     console.log(iconLink);
+    var output = document.querySelector('.output');
+
+    function newCityWeather() {
+      output.innerHTML = '';
+      var cityInfo = document.createElement('div');
+      var deleteBtn = document.createElement('button');
+      var infoUl = document.createElement('ul');
+      var infoLi1 = document.createElement('li');
+      var infoLi2 = document.createElement('li');
+      var infoLi3 = document.createElement('li');
+      var infoLi4 = document.createElement('li');
+      var infoLi5 = document.createElement('li');
+      var infoLi6 = document.createElement('li');
+      cityInfo.style.border = '2px solid purple';
+      infoLi1.innerHTML = city;
+      infoLi2.innerHTML = weatherImage;
+      infoLi2.innerHTML = weatherImage1;
+      infoLi3.innerHTML = "Temperature: ".concat(temp, "C");
+      infoLi4.innerHTML = "Description: ".concat(weather);
+      infoLi5.innerHTML = "Humidity: ".concat(humidity, "%");
+      infoLi6.innerHTML = "Retrieved on ".concat(date);
+      output.appendChild(cityInfo);
+      cityInfo.appendChild(deleteBtn);
+      cityInfo.appendChild(infoUl);
+      infoUl.appendChild(infoLi1);
+      infoUl.appendChild(weatherImage);
+      infoUl.appendChild(weatherImage1);
+      infoUl.appendChild(infoLi3);
+      infoUl.appendChild(infoLi4);
+      infoUl.appendChild(infoLi5);
+      infoUl.appendChild(infoLi6);
+    }
+
+    newCityWeather();
   }).catch(function (error) {
     alert("ERROR404\nNeteisingai įvestas miesto pavadinimas!", error);
   });
 };
 
 exports.fetchData = fetchData;
-},{"./submitButton.js":"api/submitButton.js"}],"index.js":[function(require,module,exports) {
+},{"./submitButton.js":"api/submitButton.js","./newCityWeather.js":"api/newCityWeather.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _fetchData = require("./api/fetchData.js");
-},{"./api/fetchData.js":"api/fetchData.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var _newCityWeather = require("./api/newCityWeather.js");
+
+console.log(_newCityWeather.newCityWeather);
+},{"./api/fetchData.js":"api/fetchData.js","./api/newCityWeather.js":"api/newCityWeather.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -210,7 +277,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58822" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61060" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
