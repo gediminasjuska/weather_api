@@ -1,6 +1,11 @@
 body{
     margin: 0;
     background-color: #ffdede;
+    /*overflow: hidden;*/
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 .header{
     border-bottom: 1px solid grey;
@@ -8,6 +13,8 @@ body{
     background-color: #fff;
     display: flex;
     align-items: center;
+    position: fixed;
+    width: 100%;
 }
 h1{
     margin: 0;
@@ -72,6 +79,7 @@ input::-moz-focus-outer{
 .output{
     display: flex;
     width: 75%;
+    flex-wrap: wrap;
 }
 .output-align{
     display: flex;
@@ -81,6 +89,17 @@ input::-moz-focus-outer{
     width: 20px;
     height: 20px;
     float: right;
+}
+.show-more{
+    position: absolute;
+    height: 220px;
+    width: 1200px;
+    bottom: 0;
+    background-color: #ffdede;
+    display: none;
+}
+.show-more-top{
+
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

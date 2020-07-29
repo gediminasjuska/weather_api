@@ -211,6 +211,27 @@ var fetchData = function fetchData() {
       infoUl.appendChild(infoLi4);
       infoUl.appendChild(infoLi5);
       infoUl.appendChild(infoLi6);
+      var showMore = document.querySelector('.show-more');
+      var c = document.querySelector('.output').childElementCount;
+      var body = document.querySelector('body');
+      var showMoreBtn = document.querySelector(".show_more_btn");
+      var turinys = true;
+
+      function veikia() {
+        if (c === 7) {
+          console.log('labas');
+          showMore.style.display = "block";
+          body.style.overflow = "hidden";
+        }
+      }
+
+      veikia();
+      showMoreBtn.addEventListener('click', function () {
+        showMore.style.display = "none";
+        body.style.overflow = "auto";
+        turinys = false;
+      });
+      console.log(turinys);
       deleteBtn.addEventListener('click', function () {
         cityInfo.remove();
       });
@@ -220,7 +241,10 @@ var fetchData = function fetchData() {
   }).catch(function (error) {
     alert("ERROR404\nNeteisingai įvestas miesto pavadinimas!", error);
   });
-};
+}; // tikrinti id korteliu per submit, nes info jau bus localstorage
+//tikrinti pasikartojancias korteles pagal time id
+//suteikti ir klase ir id atskirai
+
 
 exports.fetchData = fetchData;
 },{"./submitButton.js":"api/submitButton.js"}],"index.js":[function(require,module,exports) {

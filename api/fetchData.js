@@ -67,7 +67,28 @@ const fetchData = () => {
                 infoUl.appendChild(infoLi4)
                 infoUl.appendChild(infoLi5)
                 infoUl.appendChild(infoLi6)
-
+                
+                const showMore = document.querySelector('.show-more')
+                const c = document.querySelector('.output').childElementCount;
+                const body = document.querySelector('body')
+                const showMoreBtn = document.querySelector(".show_more_btn")
+                
+                let turinys = true
+                function veikia(){
+                    if( c === 7 ){
+                        console.log('labas')
+                        showMore.style.display = "block"
+                        body.style.overflow = "hidden"
+                    }
+                    
+                }
+                veikia()
+                showMoreBtn.addEventListener('click', function(){
+                    showMore.style.display = "none"
+                    body.style.overflow = "auto"
+                    turinys = false
+                })
+                console.log(turinys)
                 deleteBtn.addEventListener('click', function(){
                     cityInfo.remove()
                 })
@@ -82,3 +103,8 @@ const fetchData = () => {
 }
 
 export {fetchData}
+
+// tikrinti id korteliu per submit, nes info jau bus localstorage
+//tikrinti pasikartojancias korteles pagal time id
+//suteikti ir klase ir id atskirai
+
