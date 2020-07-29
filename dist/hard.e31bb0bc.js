@@ -216,34 +216,13 @@ var fetchData = function fetchData() {
 };
 
 exports.fetchData = fetchData;
-},{"./submitButton.js":"api/submitButton.js"}],"api/newCityWeather.js":[function(require,module,exports) {
-// import {fetchData} from './fetchData.js'
-// import {submitButton} from './submitButton.js'
-// const output = document.querySelector('.output')
-//         const newCityWeather = function(){
-//             fetchData(city)
-//                 output.innerHTML = ''
-//                 const cityInfo = document.createElement('div')
-//                 const deleteBtn = document.createElement('button')
-//                 const infoUl = document.createElement('ul')
-//                 const infoLi = document.createElement('li')
-//                 cityInfo.style.border = '2px solid purple'
-//                 infoLi.innerHTML = city
-//                 output.appendChild(cityInfo)
-//                 cityInfo.appendChild(deleteBtn)
-//                 cityInfo.appendChild(infoUl)
-//                 infoUl.appendChild(infoLi)
-//             }
-// export {newCityWeather}
-},{}],"index.js":[function(require,module,exports) {
+},{"./submitButton.js":"api/submitButton.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _fetchData = require("./api/fetchData.js");
 
-var _newCityWeather = require("./api/newCityWeather.js");
-
-console.log(_newCityWeather.newCityWeather);
-},{"./api/fetchData.js":"api/fetchData.js","./api/newCityWeather.js":"api/newCityWeather.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+console.log(newCityWeather);
+},{"./api/fetchData.js":"api/fetchData.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
