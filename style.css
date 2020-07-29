@@ -38,7 +38,7 @@ input:focus{
 input::-moz-focus-outer{
     outline: none;
 }
-button{
+.submitBtn{
     width: 145px;
     height: 65px;
     border: none;
@@ -50,18 +50,35 @@ button{
     opacity: 30%;
     -webkit-transition-duration: 0.5s;
 }
-button:focus{
+.submitBtn:focus{
     outline: none;
 }
-button:hover{
+.submitBtn:hover{
     opacity: 100%;
     transition-duration: 0.5s;
 }
-button:active{
+.submitBtn:active{
     transition-duration: 0s !important;
     -webkit-transition-duration: 0s !important;
     transform: scale(0.95);
 }
 .search-box{
     margin-right: 50px;
+}
+#card{
+    width: 305px;
+    margin: 8px;
+}
+.output{
+    display: flex;
+    width: 75%;
+}
+.output-align{
+    display: flex;
+    justify-content: center;
+}
+#deleteBtn{
+    width: 20px;
+    height: 20px;
+    float: right;
 }

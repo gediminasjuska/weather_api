@@ -160,6 +160,10 @@ var fetchData = function fetchData() {
   fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(cityName.value, "&units=").concat(units, "&appid=93222b93865e98e9f99d18eaf4715fbb")).then(function (response) {
     return response.json();
   }).then(function (body) {
+    var citiesArr = [];
+    var date = new Date();
+    citiesArr.push(date);
+    console.log(citiesArr);
     var city1 = JSON.stringify(body.name);
     var temp1 = JSON.stringify(body.main.temp);
     var humidity1 = JSON.stringify(body.main.humidity);
@@ -170,7 +174,6 @@ var fetchData = function fetchData() {
     var humidity = JSON.parse(humidity1);
     var weather = JSON.parse(weather1);
     var weatherIcon = JSON.parse(weatherIcon1);
-    var date = new Date();
     var iconLink = "http://openweathermap.org/img/wn/".concat(weatherIcon, ".png");
     var weatherImage = document.createElement('img');
     var weatherImage1 = document.createElement('img');
@@ -179,7 +182,6 @@ var fetchData = function fetchData() {
     var output = document.querySelector('.output');
 
     function newCityWeather() {
-      output.innerHTML = '';
       var cityInfo = document.createElement('div');
       var deleteBtn = document.createElement('button');
       var infoUl = document.createElement('ul');
@@ -190,6 +192,8 @@ var fetchData = function fetchData() {
       var infoLi5 = document.createElement('li');
       var infoLi6 = document.createElement('li');
       cityInfo.style.border = '2px solid purple';
+      cityInfo.setAttribute('id', 'card');
+      deleteBtn.setAttribute('id', 'deleteBtn');
       infoLi1.innerHTML = city;
       infoLi2.innerHTML = weatherImage;
       infoLi2.innerHTML = weatherImage1;
@@ -207,6 +211,9 @@ var fetchData = function fetchData() {
       infoUl.appendChild(infoLi4);
       infoUl.appendChild(infoLi5);
       infoUl.appendChild(infoLi6);
+      deleteBtn.addEventListener('click', function () {
+        cityInfo.remove();
+      });
     }
 
     newCityWeather();
@@ -220,8 +227,6 @@ exports.fetchData = fetchData;
 "use strict";
 
 var _fetchData = require("./api/fetchData.js");
-
-console.log(newCityWeather);
 },{"./api/fetchData.js":"api/fetchData.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

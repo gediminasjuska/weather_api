@@ -5,10 +5,17 @@ const cityName = document.querySelector('input')
 const fetchData = () => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&units=${units}&appid=93222b93865e98e9f99d18eaf4715fbb`)
 
+        
+
         .then(function(response) {
             return response.json();
         })
-        .then(function(body) {          
+        .then(function(body) {
+            const citiesArr = []  
+            const date = new Date()
+            citiesArr.push(date)
+            console.log(citiesArr)
+
             const city1 = JSON.stringify(body.name)
             const temp1 = JSON.stringify(body.main.temp)
             const humidity1 = JSON.stringify(body.main.humidity)
@@ -20,7 +27,8 @@ const fetchData = () => {
             let weather = JSON.parse(weather1)
             let weatherIcon = JSON.parse(weatherIcon1)
 
-            const date = new Date()
+            
+            
             const iconLink = `http://openweathermap.org/img/wn/${weatherIcon}.png`
             const weatherImage = document.createElement('img')
             const weatherImage1 = document.createElement('img')
@@ -29,7 +37,6 @@ const fetchData = () => {
             
             const output = document.querySelector('.output')
             function newCityWeather(){
-                output.innerHTML = ''
                 const cityInfo = document.createElement('div')
                 const deleteBtn = document.createElement('button')
                 const infoUl = document.createElement('ul')
@@ -40,7 +47,8 @@ const fetchData = () => {
                 const infoLi5 = document.createElement('li')
                 const infoLi6 = document.createElement('li')
                 cityInfo.style.border = '2px solid purple'
-
+                cityInfo.setAttribute('id', 'card')
+                deleteBtn.setAttribute('id', 'deleteBtn')
                 infoLi1.innerHTML = city
                 infoLi2.innerHTML = weatherImage
                 infoLi2.innerHTML = weatherImage1
@@ -59,9 +67,14 @@ const fetchData = () => {
                 infoUl.appendChild(infoLi4)
                 infoUl.appendChild(infoLi5)
                 infoUl.appendChild(infoLi6)
+
+                deleteBtn.addEventListener('click', function(){
+                    cityInfo.remove()
+                })
+
             }
             newCityWeather()
-
+        
         })
         .catch(function(error){
                 alert("ERROR404\nNeteisingai įvestas miesto pavadinimas!", error)
