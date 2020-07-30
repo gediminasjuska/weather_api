@@ -20,9 +20,11 @@ body{
     z-index: 1;
 }
 h1{
-    margin: 0;
     width: 75%;
-    margin-left: 10px;
+}
+.git-icon{
+    width: 5%;
+    text-align: right;
 }
 .main{
     max-width: 100%;
@@ -147,5 +149,13 @@ input::-moz-focus-outer{
     margin-top: 8px;
 
 }
+#git-icon {
+    animation: rotate 1.5s linear infinite;
+}
+@-webkit-keyframes rotate {
+    to {transform: rotate(360deg);}
+}
+
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
