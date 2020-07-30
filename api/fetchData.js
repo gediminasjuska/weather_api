@@ -26,6 +26,10 @@ const fetchData = () => {
             let weather = JSON.parse(weather1)
             let weatherIcon = JSON.parse(weatherIcon1)
             
+            // const loading = document.querySelector('#paejo')
+            // loading.remove()
+            document.getElementById('paejo').innerText = 'Pateikti'
+
             
             const iconLink = `http://openweathermap.org/img/wn/${weatherIcon}.png`
             const weatherImage1 = document.createElement('img')
@@ -105,6 +109,7 @@ const fetchData = () => {
                 })
                 deleteBtn.addEventListener('click', function(){
                     cityInfo.remove()
+                    
                 })
 
             }
