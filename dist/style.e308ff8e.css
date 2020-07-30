@@ -104,7 +104,6 @@ li:nth-child(1){
 body{
     margin: 0;
     background-color: #b5ddff;
-    /*overflow: hidden;*/
     font-family: 'Raleway', sans-serif;
 }
 ::-webkit-scrollbar {
@@ -148,6 +147,9 @@ input::-moz-focus-outer{
     color: aliceblue;
     opacity: 65%;
     -webkit-transition-duration: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .submitBtn:focus{
     outline: none;
@@ -164,6 +166,25 @@ input::-moz-focus-outer{
 .search-box{
     margin-right: 50px;
 }
+.loader {
+    border: 5px solid transparent;
+    border-radius: 50%;
+    border-top: 5px solid white;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    display: none;
+  }
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 
 

@@ -26,11 +26,9 @@ const fetchData = () => {
             let weather = JSON.parse(weather1)
             let weatherIcon = JSON.parse(weatherIcon1)
             
-            // const loading = document.querySelector('#paejo')
-            // loading.remove()
-            document.getElementById('paejo').innerText = 'Pateikti'
+            document.querySelector('.loader').style.display = 'none'
+            document.querySelector('#submit').style.display = 'block'  
 
-            
             const iconLink = `http://openweathermap.org/img/wn/${weatherIcon}.png`
             const weatherImage1 = document.createElement('img')
             const weatherImage2 = document.createElement('img')

@@ -130,8 +130,8 @@ var _fetchData = require("./fetchData.js");
 var cityName = document.querySelector('input');
 var submitButton = document.querySelector('button');
 exports.submitButton = submitButton;
-var loaderParent = document.querySelector('.search-button'); // const loader = document.querySelector('#paejo')
-
+var loader = document.querySelector('.loader');
+var submit = document.querySelector('#submit');
 submitButton.addEventListener('click', function () {
   var badDate = new Date();
   var superDate = badDate.getTime();
@@ -139,13 +139,15 @@ submitButton.addEventListener('click', function () {
   if (cityName.value == "") {
     alert('Neįvestas miesto pavadinimas!');
   } else {
-    document.getElementById('paejo').innerText = '';
+    submit.style.display = "none";
+    loader.style.display = "block";
     (0, _fetchData.fetchData)();
   }
 });
 cityName.addEventListener('keyup', function (event) {
   if (event.keyCode === 13) {
-    document.getElementById('paejo').innerText = 'paejo';
+    submit.style.display = "none";
+    loader.style.display = "block";
     (0, _fetchData.fetchData)();
     event.preventDefault();
   }
@@ -178,10 +180,9 @@ var fetchData = function fetchData() {
     var temp = JSON.parse(temp1);
     var humidity = JSON.parse(humidity1);
     var weather = JSON.parse(weather1);
-    var weatherIcon = JSON.parse(weatherIcon1); // const loading = document.querySelector('#paejo')
-    // loading.remove()
-
-    document.getElementById('paejo').innerText = 'Pateikti';
+    var weatherIcon = JSON.parse(weatherIcon1);
+    document.querySelector('.loader').style.display = 'none';
+    document.querySelector('#submit').style.display = 'block';
     var iconLink = "http://openweathermap.org/img/wn/".concat(weatherIcon, ".png");
     var weatherImage1 = document.createElement('img');
     var weatherImage2 = document.createElement('img');
