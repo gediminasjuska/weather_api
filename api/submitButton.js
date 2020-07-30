@@ -22,6 +22,7 @@ submitButton.addEventListener('click', function(){
 })
 cityName.addEventListener('keyup', function(event){
     if (event.keyCode === 13){
+        document.getElementById('paejo').innerText = 'paejo'
         fetchData()
         event.preventDefault()
     }

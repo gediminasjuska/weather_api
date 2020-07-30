@@ -145,6 +145,7 @@ submitButton.addEventListener('click', function () {
 });
 cityName.addEventListener('keyup', function (event) {
   if (event.keyCode === 13) {
+    document.getElementById('paejo').innerText = 'paejo';
     (0, _fetchData.fetchData)();
     event.preventDefault();
   }
