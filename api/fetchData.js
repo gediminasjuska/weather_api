@@ -12,10 +12,20 @@ const fetchData = () => {
         })
         .then(function(body) {
             const citiesArr = []  
-            const date = new Date()
-            citiesArr.push(date)
-            console.log(citiesArr)
+            const date = new Date
+            const del = date.getTime()
+            
 
+            function saveToLocalStorage(dul){
+                citiesArr.push(del)
+                const toJson = JSON.stringify(dul)
+                localStorage.setItem('notes', toJson)
+            }
+
+            
+
+            saveToLocalStorage(citiesArr)
+            console.log(citiesArr)
             const city1 = JSON.stringify(body.name)
             const temp1 = JSON.stringify(body.main.temp)
             const humidity1 = JSON.stringify(body.main.humidity)
@@ -26,7 +36,6 @@ const fetchData = () => {
             let humidity = JSON.parse(humidity1)
             let weather = JSON.parse(weather1)
             let weatherIcon = JSON.parse(weatherIcon1)
-
             
             
             const iconLink = `http://openweathermap.org/img/wn/${weatherIcon}.png`
@@ -46,8 +55,9 @@ const fetchData = () => {
                 const infoLi4 = document.createElement('li')
                 const infoLi5 = document.createElement('li')
                 const infoLi6 = document.createElement('li')
-                cityInfo.style.border = '2px solid purple'
-                cityInfo.setAttribute('id', 'card')
+                cityInfo.setAttribute('class', 'card')
+                const cardId = 'delete'+del
+                cityInfo.setAttribute('id', cardId)
                 deleteBtn.setAttribute('id', 'deleteBtn')
                 infoLi1.innerHTML = city
                 infoLi2.innerHTML = weatherImage
@@ -56,7 +66,6 @@ const fetchData = () => {
                 infoLi4.innerHTML = `Description: ${weather}`
                 infoLi5.innerHTML = `Humidity: ${humidity}%`
                 infoLi6.innerHTML = `Retrieved on ${date}`
-
                 output.appendChild(cityInfo)
                 cityInfo.appendChild(deleteBtn)
                 cityInfo.appendChild(infoUl)
@@ -73,22 +82,25 @@ const fetchData = () => {
                 const body = document.querySelector('body')
                 const showMoreBtn = document.querySelector(".show_more_btn")
                 
-                let turinys = true
-                function veikia(){
+                
+                //console.log(arr)
+
+                let showMoreValue = true
+                function showMoreHide(){
                     if( c === 7 ){
-                        console.log('labas')
                         showMore.style.display = "block"
                         body.style.overflow = "hidden"
+                        showMore.style.height = "220px"
                     }
                     
                 }
-                veikia()
+                showMoreHide()
                 showMoreBtn.addEventListener('click', function(){
                     showMore.style.display = "none"
                     body.style.overflow = "auto"
-                    turinys = false
+                    showMore.style.height = "0px"
+                    showMoreValue = false
                 })
-                console.log(turinys)
                 deleteBtn.addEventListener('click', function(){
                     cityInfo.remove()
                 })

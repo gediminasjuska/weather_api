@@ -1,7 +1,8 @@
 body{
     margin: 0;
-    background-color: #ffdede;
+    background-color: #b5ddff;
     /*overflow: hidden;*/
+    font-family: 'Raleway', sans-serif;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -10,25 +11,29 @@ body{
 .header{
     border-bottom: 1px solid grey;
     height: 65px;
-    background-color: #fff;
+    background-color: #a3c6e5;
     display: flex;
     align-items: center;
     position: fixed;
     width: 100%;
+    justify-content: center;
+    z-index: 1;
 }
 h1{
     margin: 0;
+    width: 75%;
+    margin-left: 10px;
 }
 .main{
     max-width: 100%;
 }
 .find-city{
-    padding-top: 80px;
+    padding-top: 150px;
     display: flex;
     justify-content: center;
 }
 input{
-    width: 500px;
+    width: 600px;
     height: 60px;
     border: none;
     border-bottom: 2px solid darkgrey;
@@ -54,7 +59,7 @@ input::-moz-focus-outer{
     font-size: 21px;
     cursor: pointer;
     color: aliceblue;
-    opacity: 30%;
+    opacity: 65%;
     -webkit-transition-duration: 0.5s;
 }
 .submitBtn:focus{
@@ -72,14 +77,25 @@ input::-moz-focus-outer{
 .search-box{
     margin-right: 50px;
 }
-#card{
-    width: 305px;
+.card{
+    width: 300px;
     margin: 8px;
+    background-color: #e1dcd9;
+    border: 2px solid #050505;
+    border-radius: 10px;
+    font-size: 15px;
 }
 .output{
     display: flex;
-    width: 75%;
+    width: 65%;
     flex-wrap: wrap;
+    place-content: flex-start;
+    width: 960px;
+}
+.bandymas{
+    display: flex;
+    justify-content: center;
+    width: 65%;
 }
 .output-align{
     display: flex;
@@ -92,13 +108,43 @@ input::-moz-focus-outer{
 }
 .show-more{
     position: absolute;
-    height: 220px;
     width: 1200px;
     bottom: 0;
-    background-color: #ffdede;
     display: none;
 }
 .show-more-top{
+    height: 65px;
+    background-color: #b5ddff;
+    opacity: 90%;
+    text-align: center;
+    padding: 20px 0px 0px 0px;
+}
+.show-more-bottom{
+    background-color: #b5ddff;
+    z-index: 34;
+    height: 155px;
+}
+.show_more_btn{
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: underline;
+}
+.show_more_btn:focus{
+    outline: none;
+}
+#deleteBtn{
+    background-color: #fff;
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: 25px;
+    width: 25px;
+    margin: 7px 0;
+    transition: all .2s ease-in-out;
+    margin-right: 8px;
+    margin-top: 8px;
 
 }
 

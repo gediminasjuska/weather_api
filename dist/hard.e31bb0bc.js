@@ -130,11 +130,20 @@ var _fetchData = require("./fetchData.js");
 var cityName = document.querySelector('input');
 var submitButton = document.querySelector('button');
 exports.submitButton = submitButton;
+var newArr = ["aaa"];
+var cars = [];
+var button = document.querySelector('button');
+var x = 'labas';
+var output1 = document.querySelector('.output');
 submitButton.addEventListener('click', function () {
+  var badDate = new Date();
+  var superDate = badDate.getTime();
+
   if (cityName.value == "") {
     alert('Neįvestas miesto pavadinimas!');
   } else {
     (0, _fetchData.fetchData)();
+    cars.push(superDate); //console.log(cars)    
   }
 });
 cityName.addEventListener('keyup', function (event) {
@@ -142,7 +151,15 @@ cityName.addEventListener('keyup', function (event) {
     (0, _fetchData.fetchData)();
     event.preventDefault();
   }
-});
+}); // atsiversti arrays paskaitą
+// const cardId = document.createElement('div')
+//     cardId.setAttribute('class', 'card')
+//     cardId.setAttribute('id', 'delete'+superDate)
+//     output1.appendChild(cardId)
+//     const elementAd = document.getElementsByClassName('card')
+//     var arr = Array.from(htmlCollection);
+//     console.log(elementAd)
+//     console.log(arr)
 },{"./fetchData.js":"api/fetchData.js"}],"api/fetchData.js":[function(require,module,exports) {
 "use strict";
 
@@ -162,7 +179,15 @@ var fetchData = function fetchData() {
   }).then(function (body) {
     var citiesArr = [];
     var date = new Date();
-    citiesArr.push(date);
+    var del = date.getTime();
+
+    function saveToLocalStorage(dul) {
+      citiesArr.push(del);
+      var toJson = JSON.stringify(dul);
+      localStorage.setItem('notes', toJson);
+    }
+
+    saveToLocalStorage(citiesArr);
     console.log(citiesArr);
     var city1 = JSON.stringify(body.name);
     var temp1 = JSON.stringify(body.main.temp);
@@ -191,8 +216,9 @@ var fetchData = function fetchData() {
       var infoLi4 = document.createElement('li');
       var infoLi5 = document.createElement('li');
       var infoLi6 = document.createElement('li');
-      cityInfo.style.border = '2px solid purple';
-      cityInfo.setAttribute('id', 'card');
+      cityInfo.setAttribute('class', 'card');
+      var cardId = 'delete' + del;
+      cityInfo.setAttribute('id', cardId);
       deleteBtn.setAttribute('id', 'deleteBtn');
       infoLi1.innerHTML = city;
       infoLi2.innerHTML = weatherImage;
@@ -214,24 +240,25 @@ var fetchData = function fetchData() {
       var showMore = document.querySelector('.show-more');
       var c = document.querySelector('.output').childElementCount;
       var body = document.querySelector('body');
-      var showMoreBtn = document.querySelector(".show_more_btn");
-      var turinys = true;
+      var showMoreBtn = document.querySelector(".show_more_btn"); //console.log(arr)
 
-      function veikia() {
+      var showMoreValue = true;
+
+      function showMoreHide() {
         if (c === 7) {
-          console.log('labas');
           showMore.style.display = "block";
           body.style.overflow = "hidden";
+          showMore.style.height = "220px";
         }
       }
 
-      veikia();
+      showMoreHide();
       showMoreBtn.addEventListener('click', function () {
         showMore.style.display = "none";
         body.style.overflow = "auto";
-        turinys = false;
+        showMore.style.height = "0px";
+        showMoreValue = false;
       });
-      console.log(turinys);
       deleteBtn.addEventListener('click', function () {
         cityInfo.remove();
       });
@@ -251,7 +278,9 @@ exports.fetchData = fetchData;
 "use strict";
 
 var _fetchData = require("./api/fetchData.js");
-},{"./api/fetchData.js":"api/fetchData.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var _submitButton = require("./api/submitButton.js");
+},{"./api/fetchData.js":"api/fetchData.js","./api/submitButton.js":"api/submitButton.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -279,7 +308,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65235" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55613" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
