@@ -1,0 +1,28 @@
+.show-more{
+    position: absolute;
+    width: 1200px;
+    bottom: 0;
+    display: none;
+}
+.show-more-top{
+    height: 65px;
+    background-color: #b5ddff;
+    opacity: 90%;
+    text-align: center;
+    padding: 20px 0px 0px 0px;
+}
+.show-more-bottom{
+    background-color: #b5ddff;
+    z-index: 34;
+    height: 155px;
+}
+.show_more_btn{
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: underline;
+}
+.show_more_btn:focus{
+    outline: none;
+}

@@ -8,17 +8,7 @@ body{
     width: 0px;
     background: transparent;
 }
-.header{
-    border-bottom: 1px solid grey;
-    height: 65px;
-    background-color: #a3c6e5;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    justify-content: center;
-    z-index: 1;
-}
+
 h1{
     width: 75%;
 }
@@ -87,6 +77,25 @@ input::-moz-focus-outer{
     border-radius: 10px;
     font-size: 15px;
 }
+
+#weatherId:nth-child(3){
+    width: 40px;
+    height: 40px;
+}
+ul{
+    padding: 0;
+    padding-left: 20px;
+}
+li{
+    list-style-type: none;
+}
+li:nth-child(1){
+    font-size: 19px;
+}
+li{
+    font-size: 14px;
+    margin: 3px 0px 3px 0px;
+}
 .output{
     display: flex;
     width: 65%;
@@ -147,10 +156,12 @@ input::-moz-focus-outer{
     transition: all .2s ease-in-out;
     margin-right: 8px;
     margin-top: 8px;
+    cursor: pointer;
 
 }
 #git-icon {
-    animation: rotate 1.5s linear infinite;
+    animation: rotate 3s linear infinite;
+    color: black;
 }
 @-webkit-keyframes rotate {
     to {transform: rotate(360deg);}

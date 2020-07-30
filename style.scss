@@ -1,0 +1,72 @@
+@import 'styles/header.scss';
+@import 'styles/cards.scss';
+@import 'styles/show-more.scss';
+
+body{
+    margin: 0;
+    background-color: #b5ddff;
+    /*overflow: hidden;*/
+    font-family: 'Raleway', sans-serif;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+.main{
+    max-width: 100%;
+}
+.find-city{
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+}
+input{
+    width: 600px;
+    height: 60px;
+    border: none;
+    border-bottom: 2px solid darkgrey;
+    font-size: 33px;
+    outline: none;
+    transition: none;
+    -webkit-transition: 1.1s;
+    background-color: transparent;
+}
+input:focus{
+    border-bottom: 2px solid #0089ff;
+    transition: ease 1.1s;
+}
+input::-moz-focus-outer{
+    outline: none;
+}
+.submitBtn{
+    width: 145px;
+    height: 65px;
+    border: none;
+    background-color: #FC46AA;
+    border-radius: 25px;
+    font-size: 21px;
+    cursor: pointer;
+    color: aliceblue;
+    opacity: 65%;
+    -webkit-transition-duration: 0.5s;
+}
+.submitBtn:focus{
+    outline: none;
+}
+.submitBtn:hover{
+    opacity: 100%;
+    transition-duration: 0.5s;
+}
+.submitBtn:active{
+    transition-duration: 0s !important;
+    -webkit-transition-duration: 0s !important;
+    transform: scale(0.95);
+}
+.search-box{
+    margin-right: 50px;
+}
+
+
+
+
+

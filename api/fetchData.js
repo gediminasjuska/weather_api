@@ -11,26 +11,15 @@ const fetchData = () => {
             return response.json();
         })
         .then(function(body) {
-            const citiesArr = []  
             const date = new Date
             const del = date.getTime()
             
-
-            function saveToLocalStorage(dul){
-                citiesArr.push(del)
-                const toJson = JSON.stringify(dul)
-                localStorage.setItem('notes', toJson)
-            }
-
-            
-
-            saveToLocalStorage(citiesArr)
-            console.log(citiesArr)
             const city1 = JSON.stringify(body.name)
             const temp1 = JSON.stringify(body.main.temp)
             const humidity1 = JSON.stringify(body.main.humidity)
             const weather1 = JSON.stringify(body.weather[0].description)
             const weatherIcon1 = JSON.stringify(body.weather[0].icon)
+
             let city = JSON.parse(city1)
             let temp = JSON.parse(temp1)
             let humidity = JSON.parse(humidity1)
@@ -39,10 +28,18 @@ const fetchData = () => {
             
             
             const iconLink = `http://openweathermap.org/img/wn/${weatherIcon}.png`
-            const weatherImage = document.createElement('img')
             const weatherImage1 = document.createElement('img')
-            weatherImage.src = iconLink
+            const weatherImage2 = document.createElement('img')
+            const weatherImage3 = document.createElement('img')
+            const weatherImage4 = document.createElement('img')
             weatherImage1.src = iconLink
+            weatherImage2.src = iconLink
+            weatherImage3.src = iconLink
+            weatherImage4.src = iconLink
+            weatherImage1.setAttribute('id', 'weatherId')
+            weatherImage2.setAttribute('id', 'weatherId')
+            weatherImage3.setAttribute('id', 'weatherId')
+            weatherImage4.setAttribute('id', 'weatherId')
             
             const output = document.querySelector('.output')
             function newCityWeather(){
@@ -55,23 +52,29 @@ const fetchData = () => {
                 const infoLi4 = document.createElement('li')
                 const infoLi5 = document.createElement('li')
                 const infoLi6 = document.createElement('li')
+                
                 cityInfo.setAttribute('class', 'card')
                 const cardId = 'delete'+del
                 cityInfo.setAttribute('id', cardId)
                 deleteBtn.setAttribute('id', 'deleteBtn')
                 infoLi1.innerHTML = city
-                infoLi2.innerHTML = weatherImage
                 infoLi2.innerHTML = weatherImage1
+                infoLi2.innerHTML = weatherImage2
+                infoLi2.innerHTML = weatherImage3
+                infoLi2.innerHTML = weatherImage4
                 infoLi3.innerHTML = `Temperature: ${temp}C`
                 infoLi4.innerHTML = `Description: ${weather}`
                 infoLi5.innerHTML = `Humidity: ${humidity}%`
-                infoLi6.innerHTML = `Retrieved on ${date}`
+                infoLi6.innerHTML = `Retrieved on: ${date}`
+
                 output.appendChild(cityInfo)
                 cityInfo.appendChild(deleteBtn)
                 cityInfo.appendChild(infoUl)
                 infoUl.appendChild(infoLi1)
-                infoUl.appendChild(weatherImage)
                 infoUl.appendChild(weatherImage1)
+                infoUl.appendChild(weatherImage2)
+                infoUl.appendChild(weatherImage3)
+                infoUl.appendChild(weatherImage4)
                 infoUl.appendChild(infoLi3)
                 infoUl.appendChild(infoLi4)
                 infoUl.appendChild(infoLi5)
@@ -81,9 +84,7 @@ const fetchData = () => {
                 const c = document.querySelector('.output').childElementCount;
                 const body = document.querySelector('body')
                 const showMoreBtn = document.querySelector(".show_more_btn")
-                
-                
-                //console.log(arr)
+
 
                 let showMoreValue = true
                 function showMoreHide(){
@@ -95,6 +96,7 @@ const fetchData = () => {
                     
                 }
                 showMoreHide()
+
                 showMoreBtn.addEventListener('click', function(){
                     showMore.style.display = "none"
                     body.style.overflow = "auto"
@@ -107,7 +109,6 @@ const fetchData = () => {
 
             }
             newCityWeather()
-        
         })
         .catch(function(error){
                 alert("ERROR404\nNeteisingai įvestas miesto pavadinimas!", error)
@@ -115,8 +116,4 @@ const fetchData = () => {
 }
 
 export {fetchData}
-
-// tikrinti id korteliu per submit, nes info jau bus localstorage
-//tikrinti pasikartojancias korteles pagal time id
-//suteikti ir klase ir id atskirai
 

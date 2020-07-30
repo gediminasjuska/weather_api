@@ -130,11 +130,6 @@ var _fetchData = require("./fetchData.js");
 var cityName = document.querySelector('input');
 var submitButton = document.querySelector('button');
 exports.submitButton = submitButton;
-var newArr = ["aaa"];
-var cars = [];
-var button = document.querySelector('button');
-var x = 'labas';
-var output1 = document.querySelector('.output');
 submitButton.addEventListener('click', function () {
   var badDate = new Date();
   var superDate = badDate.getTime();
@@ -143,7 +138,7 @@ submitButton.addEventListener('click', function () {
     alert('Neįvestas miesto pavadinimas!');
   } else {
     (0, _fetchData.fetchData)();
-    cars.push(superDate); //console.log(cars)    
+    cars.push(superDate);
   }
 });
 cityName.addEventListener('keyup', function (event) {
@@ -151,15 +146,7 @@ cityName.addEventListener('keyup', function (event) {
     (0, _fetchData.fetchData)();
     event.preventDefault();
   }
-}); // atsiversti arrays paskaitą
-// const cardId = document.createElement('div')
-//     cardId.setAttribute('class', 'card')
-//     cardId.setAttribute('id', 'delete'+superDate)
-//     output1.appendChild(cardId)
-//     const elementAd = document.getElementsByClassName('card')
-//     var arr = Array.from(htmlCollection);
-//     console.log(elementAd)
-//     console.log(arr)
+});
 },{"./fetchData.js":"api/fetchData.js"}],"api/fetchData.js":[function(require,module,exports) {
 "use strict";
 
@@ -177,18 +164,8 @@ var fetchData = function fetchData() {
   fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(cityName.value, "&units=").concat(units, "&appid=93222b93865e98e9f99d18eaf4715fbb")).then(function (response) {
     return response.json();
   }).then(function (body) {
-    var citiesArr = [];
     var date = new Date();
     var del = date.getTime();
-
-    function saveToLocalStorage(dul) {
-      citiesArr.push(del);
-      var toJson = JSON.stringify(dul);
-      localStorage.setItem('notes', toJson);
-    }
-
-    saveToLocalStorage(citiesArr);
-    console.log(citiesArr);
     var city1 = JSON.stringify(body.name);
     var temp1 = JSON.stringify(body.main.temp);
     var humidity1 = JSON.stringify(body.main.humidity);
@@ -200,10 +177,18 @@ var fetchData = function fetchData() {
     var weather = JSON.parse(weather1);
     var weatherIcon = JSON.parse(weatherIcon1);
     var iconLink = "http://openweathermap.org/img/wn/".concat(weatherIcon, ".png");
-    var weatherImage = document.createElement('img');
     var weatherImage1 = document.createElement('img');
-    weatherImage.src = iconLink;
+    var weatherImage2 = document.createElement('img');
+    var weatherImage3 = document.createElement('img');
+    var weatherImage4 = document.createElement('img');
     weatherImage1.src = iconLink;
+    weatherImage2.src = iconLink;
+    weatherImage3.src = iconLink;
+    weatherImage4.src = iconLink;
+    weatherImage1.setAttribute('id', 'weatherId');
+    weatherImage2.setAttribute('id', 'weatherId');
+    weatherImage3.setAttribute('id', 'weatherId');
+    weatherImage4.setAttribute('id', 'weatherId');
     var output = document.querySelector('.output');
 
     function newCityWeather() {
@@ -221,18 +206,22 @@ var fetchData = function fetchData() {
       cityInfo.setAttribute('id', cardId);
       deleteBtn.setAttribute('id', 'deleteBtn');
       infoLi1.innerHTML = city;
-      infoLi2.innerHTML = weatherImage;
       infoLi2.innerHTML = weatherImage1;
+      infoLi2.innerHTML = weatherImage2;
+      infoLi2.innerHTML = weatherImage3;
+      infoLi2.innerHTML = weatherImage4;
       infoLi3.innerHTML = "Temperature: ".concat(temp, "C");
       infoLi4.innerHTML = "Description: ".concat(weather);
       infoLi5.innerHTML = "Humidity: ".concat(humidity, "%");
-      infoLi6.innerHTML = "Retrieved on ".concat(date);
+      infoLi6.innerHTML = "Retrieved on: ".concat(date);
       output.appendChild(cityInfo);
       cityInfo.appendChild(deleteBtn);
       cityInfo.appendChild(infoUl);
       infoUl.appendChild(infoLi1);
-      infoUl.appendChild(weatherImage);
       infoUl.appendChild(weatherImage1);
+      infoUl.appendChild(weatherImage2);
+      infoUl.appendChild(weatherImage3);
+      infoUl.appendChild(weatherImage4);
       infoUl.appendChild(infoLi3);
       infoUl.appendChild(infoLi4);
       infoUl.appendChild(infoLi5);
@@ -240,8 +229,7 @@ var fetchData = function fetchData() {
       var showMore = document.querySelector('.show-more');
       var c = document.querySelector('.output').childElementCount;
       var body = document.querySelector('body');
-      var showMoreBtn = document.querySelector(".show_more_btn"); //console.log(arr)
-
+      var showMoreBtn = document.querySelector(".show_more_btn");
       var showMoreValue = true;
 
       function showMoreHide() {
@@ -268,10 +256,7 @@ var fetchData = function fetchData() {
   }).catch(function (error) {
     alert("ERROR404\nNeteisingai įvestas miesto pavadinimas!", error);
   });
-}; // tikrinti id korteliu per submit, nes info jau bus localstorage
-//tikrinti pasikartojancias korteles pagal time id
-//suteikti ir klase ir id atskirai
-
+};
 
 exports.fetchData = fetchData;
 },{"./submitButton.js":"api/submitButton.js"}],"index.js":[function(require,module,exports) {
@@ -308,7 +293,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61468" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62934" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
