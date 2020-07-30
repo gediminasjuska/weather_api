@@ -4,13 +4,21 @@ const cityName = document.querySelector('input')
 
 const fetchData = () => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&units=${units}&appid=93222b93865e98e9f99d18eaf4715fbb`)
-
+        
         
 
         .then(function(response) {
             return response.json();
+
+            
         })
         .then(function(body) {
+            var fruits = ["Banana", "Orange", "Apple", "Mango"];
+            fruits.push("Kiwi");
+            console.log(fruits)
+            const inputValue = document.querySelector('#search')
+            inputValue.value = ''
+
             const date = new Date
             const del = date.getTime()
             
@@ -29,6 +37,10 @@ const fetchData = () => {
             document.querySelector('.loader').style.display = 'none'
             document.querySelector('#submit').style.display = 'block'  
 
+
+            
+
+
             const iconLink = `http://openweathermap.org/img/wn/${weatherIcon}.png`
             const weatherImage1 = document.createElement('img')
             const weatherImage2 = document.createElement('img')
@@ -43,6 +55,9 @@ const fetchData = () => {
             weatherImage3.setAttribute('id', 'weatherId')
             weatherImage4.setAttribute('id', 'weatherId')
             
+            
+            
+
             const output = document.querySelector('.output')
             function newCityWeather(){
                 const cityInfo = document.createElement('div')
@@ -55,19 +70,23 @@ const fetchData = () => {
                 const infoLi5 = document.createElement('li')
                 const infoLi6 = document.createElement('li')
                 
+                
+
                 cityInfo.setAttribute('class', 'card')
-                const cardId = 'delete'+del
-                cityInfo.setAttribute('id', cardId)
+                const cardId = 'delete' + del
                 deleteBtn.setAttribute('id', 'deleteBtn')
                 infoLi1.innerHTML = city
                 infoLi2.innerHTML = weatherImage1
                 infoLi2.innerHTML = weatherImage2
                 infoLi2.innerHTML = weatherImage3
                 infoLi2.innerHTML = weatherImage4
-                infoLi3.innerHTML = `Temperature: ${temp}C`
+                infoLi3.innerHTML = `Temperature: ${temp}&#176;C `
                 infoLi4.innerHTML = `Description: ${weather}`
                 infoLi5.innerHTML = `Humidity: ${humidity}%`
                 infoLi6.innerHTML = `Retrieved on: ${date}`
+
+                infoLi1.setAttribute('id', 'miestas')
+                
 
                 output.appendChild(cityInfo)
                 cityInfo.appendChild(deleteBtn)
@@ -88,10 +107,12 @@ const fetchData = () => {
                 const showMoreBtn = document.querySelector(".show_more_btn")
 
 
+                const inputValue = document.querySelector('#search')
+                inputValue.value = ''
+
                 let showMoreValue = true
                 function showMoreHide(){
                     if( c === 7 ){
-                        showMore.style.display = "block"
                         body.style.overflow = "hidden"
                         showMore.style.height = "220px"
                     }
@@ -100,7 +121,6 @@ const fetchData = () => {
                 showMoreHide()
 
                 showMoreBtn.addEventListener('click', function(){
-                    showMore.style.display = "none"
                     body.style.overflow = "auto"
                     showMore.style.height = "0px"
                     showMoreValue = false
@@ -111,10 +131,13 @@ const fetchData = () => {
                 })
 
             }
+            
             newCityWeather()
         })
         .catch(function(error){
                 alert("ERROR404\nNeteisingai įvestas miesto pavadinimas!", error)
+                document.querySelector('.loader').style.display = 'none'
+                document.querySelector('#submit').style.display = 'block'
         })
 }
 

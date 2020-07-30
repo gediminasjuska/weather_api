@@ -11,11 +11,14 @@
 }
 .card{
     width: 300px;
+    height: 201px;
     margin: 8px;
     background-color: #e1dcd9;
     border: 2px solid #050505;
     border-radius: 10px;
     font-size: 15px;
+    -webkit-transition: 0.3s linear;
+    box-shadow: 10px 10px 12px -8px rgba(0,0,0,0.44);
 }
 ul{
     padding: 0;
@@ -46,5 +49,10 @@ li:nth-child(1){
     margin-right: 8px;
     margin-top: 8px;
     cursor: pointer;
-
+    
+}
+.card:hover{
+    height: 215px;
+    transition: 0.3s ;
+    
 }

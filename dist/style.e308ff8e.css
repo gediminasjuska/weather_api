@@ -12,9 +12,15 @@
 h1{
     width: 75%;
 }
-.git-icon{
-    width: 5%;
-    text-align: right;
+#git{
+    display: flex;
+    flex-direction: column;
+}
+#git-icon{
+    text-align: center;
+}
+.github{
+    margin: 0;
 }
 #git-icon {
     animation: rotate 3s linear infinite;
@@ -36,11 +42,14 @@ h1{
 }
 .card{
     width: 300px;
+    height: 201px;
     margin: 8px;
     background-color: #e1dcd9;
     border: 2px solid #050505;
     border-radius: 10px;
     font-size: 15px;
+    -webkit-transition: 0.3s linear;
+    box-shadow: 10px 10px 12px -8px rgba(0,0,0,0.44);
 }
 ul{
     padding: 0;
@@ -71,13 +80,20 @@ li:nth-child(1){
     margin-right: 8px;
     margin-top: 8px;
     cursor: pointer;
-
+    
+}
+.card:hover{
+    height: 215px;
+    transition: 0.3s ;
+    
 }
 .show-more{
     position: absolute;
     width: 1200px;
     bottom: 0;
-    display: none;
+    transition: 0.3s all;
+    overflow: hidden;
+    height: 0px;
 }
 .show-more-top{
     height: 65px;
@@ -130,7 +146,7 @@ input{
     background-color: transparent;
 }
 input:focus{
-    border-bottom: 2px solid #0089ff;
+    border-bottom: 2px solid #FC46AA;;
     transition: ease 1.1s;
 }
 input::-moz-focus-outer{

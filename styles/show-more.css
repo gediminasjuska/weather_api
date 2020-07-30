@@ -2,7 +2,9 @@
     position: absolute;
     width: 1200px;
     bottom: 0;
-    display: none;
+    transition: 0.3s all;
+    overflow: hidden;
+    height: 0px;
 }
 .show-more-top{
     height: 65px;

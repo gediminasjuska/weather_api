@@ -117,170 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"api/submitButton.js":[function(require,module,exports) {
-"use strict";
+})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.submitButton = void 0;
-
-var _fetchData = require("./fetchData.js");
-
-var cityName = document.querySelector('input');
-var submitButton = document.querySelector('button');
-exports.submitButton = submitButton;
-var loader = document.querySelector('.loader');
-submitButton.addEventListener('click', function () {
-  var badDate = new Date();
-  var superDate = badDate.getTime();
-
-  if (cityName.value == "") {
-    alert('Neįvestas miesto pavadinimas!');
-  } else {
-    submit.style.display = "none";
-    loader.style.display = "block";
-    (0, _fetchData.fetchData)();
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
-});
-cityName.addEventListener('keyup', function (event) {
-  if (cityName.value == "" && event.keyCode === 13) {
-    alert('Neįvestas miesto pavadinimas!');
-  } else if (event.keyCode === 13) {
-    submit.style.display = "none";
-    loader.style.display = "block";
-    (0, _fetchData.fetchData)();
-    event.preventDefault();
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
   }
-});
-},{"./fetchData.js":"api/fetchData.js"}],"api/fetchData.js":[function(require,module,exports) {
-"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.fetchData = void 0;
+  return '/';
+}
 
-var _submitButton = require("./submitButton.js");
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
 
-var units = 'metric';
-var cityName = document.querySelector('input');
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
 
-var fetchData = function fetchData() {
-  fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(cityName.value, "&units=").concat(units, "&appid=93222b93865e98e9f99d18eaf4715fbb")).then(function (response) {
-    return response.json();
-  }).then(function (body) {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
-    fruits.push("Kiwi");
-    console.log(fruits);
-    var inputValue = document.querySelector('#search');
-    inputValue.value = '';
-    var date = new Date();
-    var del = date.getTime();
-    var city1 = JSON.stringify(body.name);
-    var temp1 = JSON.stringify(body.main.temp);
-    var humidity1 = JSON.stringify(body.main.humidity);
-    var weather1 = JSON.stringify(body.weather[0].description);
-    var weatherIcon1 = JSON.stringify(body.weather[0].icon);
-    var city = JSON.parse(city1);
-    var temp = JSON.parse(temp1);
-    var humidity = JSON.parse(humidity1);
-    var weather = JSON.parse(weather1);
-    var weatherIcon = JSON.parse(weatherIcon1);
-    document.querySelector('.loader').style.display = 'none';
-    document.querySelector('#submit').style.display = 'block';
-    var iconLink = "http://openweathermap.org/img/wn/".concat(weatherIcon, ".png");
-    var weatherImage1 = document.createElement('img');
-    var weatherImage2 = document.createElement('img');
-    var weatherImage3 = document.createElement('img');
-    var weatherImage4 = document.createElement('img');
-    weatherImage1.src = iconLink;
-    weatherImage2.src = iconLink;
-    weatherImage3.src = iconLink;
-    weatherImage4.src = iconLink;
-    weatherImage1.setAttribute('id', 'weatherId');
-    weatherImage2.setAttribute('id', 'weatherId');
-    weatherImage3.setAttribute('id', 'weatherId');
-    weatherImage4.setAttribute('id', 'weatherId');
-    var output = document.querySelector('.output');
+function updateLink(link) {
+  var newLink = link.cloneNode();
 
-    function newCityWeather() {
-      var cityInfo = document.createElement('div');
-      var deleteBtn = document.createElement('button');
-      var infoUl = document.createElement('ul');
-      var infoLi1 = document.createElement('li');
-      var infoLi2 = document.createElement('li');
-      var infoLi3 = document.createElement('li');
-      var infoLi4 = document.createElement('li');
-      var infoLi5 = document.createElement('li');
-      var infoLi6 = document.createElement('li');
-      cityInfo.setAttribute('class', 'card');
-      var cardId = 'delete' + del;
-      deleteBtn.setAttribute('id', 'deleteBtn');
-      infoLi1.innerHTML = city;
-      infoLi2.innerHTML = weatherImage1;
-      infoLi2.innerHTML = weatherImage2;
-      infoLi2.innerHTML = weatherImage3;
-      infoLi2.innerHTML = weatherImage4;
-      infoLi3.innerHTML = "Temperature: ".concat(temp, "&#176;C\u2002");
-      infoLi4.innerHTML = "Description: ".concat(weather);
-      infoLi5.innerHTML = "Humidity: ".concat(humidity, "%");
-      infoLi6.innerHTML = "Retrieved on: ".concat(date);
-      infoLi1.setAttribute('id', 'miestas');
-      output.appendChild(cityInfo);
-      cityInfo.appendChild(deleteBtn);
-      cityInfo.appendChild(infoUl);
-      infoUl.appendChild(infoLi1);
-      infoUl.appendChild(weatherImage1);
-      infoUl.appendChild(weatherImage2);
-      infoUl.appendChild(weatherImage3);
-      infoUl.appendChild(weatherImage4);
-      infoUl.appendChild(infoLi3);
-      infoUl.appendChild(infoLi4);
-      infoUl.appendChild(infoLi5);
-      infoUl.appendChild(infoLi6);
-      var showMore = document.querySelector('.show-more');
-      var c = document.querySelector('.output').childElementCount;
-      var body = document.querySelector('body');
-      var showMoreBtn = document.querySelector(".show_more_btn");
-      var inputValue = document.querySelector('#search');
-      inputValue.value = '';
-      var showMoreValue = true;
+  newLink.onload = function () {
+    link.remove();
+  };
 
-      function showMoreHide() {
-        if (c === 7) {
-          body.style.overflow = "hidden";
-          showMore.style.height = "220px";
-        }
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
       }
-
-      showMoreHide();
-      showMoreBtn.addEventListener('click', function () {
-        body.style.overflow = "auto";
-        showMore.style.height = "0px";
-        showMoreValue = false;
-      });
-      deleteBtn.addEventListener('click', function () {
-        cityInfo.remove();
-      });
     }
 
-    newCityWeather();
-  }).catch(function (error) {
-    alert("ERROR404\nNeteisingai įvestas miesto pavadinimas!", error);
-    document.querySelector('.loader').style.display = 'none';
-    document.querySelector('#submit').style.display = 'block';
-  });
-};
+    cssTimeout = null;
+  }, 50);
+}
 
-exports.fetchData = fetchData;
-},{"./submitButton.js":"api/submitButton.js"}],"index.js":[function(require,module,exports) {
-"use strict";
-
-var _fetchData = require("./api/fetchData.js");
-
-var _submitButton = require("./api/submitButton.js");
-},{"./api/fetchData.js":"api/fetchData.js","./api/submitButton.js":"api/submitButton.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -484,5 +388,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/hard.e31bb0bc.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/index.js.map

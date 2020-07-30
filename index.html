@@ -11,8 +11,9 @@
 <body>
     <div class="header">
         <h1>Weather API</h1>
-        <div>
-            <a href="https://github.com/gediminasjuska/weather_api" target="_blank"><i class="fab fa-2x fa-github" id="git-icon"></i></a>
+        <div id="git">
+            <div id="git-icon"><a href="https://github.com/gediminasjuska/weather_api" target="_blank"><i class="fab fa-2x fa-github" style="color:black;"></i></a></div>
+            <p class="github">Github</p>
         </div>
     </div>
 
@@ -20,7 +21,7 @@
 
         <div class="find-city">
                 <div class="search-box">
-                    <input type="text" placeholder="enter city name">
+                    <input type="text" id="search" placeholder="enter city name" autofocus>
                 </div>
                 <div class="search-button">
                     <button class="submitBtn"><div class="loader"></div><p id="submit">Pateikti</p></button>

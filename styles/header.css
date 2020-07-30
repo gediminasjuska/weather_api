@@ -12,9 +12,15 @@
 h1{
     width: 75%;
 }
-.git-icon{
-    width: 5%;
-    text-align: right;
+#git{
+    display: flex;
+    flex-direction: column;
+}
+#git-icon{
+    text-align: center;
+}
+.github{
+    margin: 0;
 }
 #git-icon {
     animation: rotate 3s linear infinite;
