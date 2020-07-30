@@ -6,7 +6,6 @@ const submitButton = document.querySelector('button')
 const loaderParent = document.querySelector('.search-button')
 // const loader = document.querySelector('#paejo')
 
-
 submitButton.addEventListener('click', function(){
     
     
@@ -15,6 +14,7 @@ submitButton.addEventListener('click', function(){
     if(cityName.value == ""){
         alert('Neįvestas miesto pavadinimas!')
     }else {
+    
     document.getElementById('paejo').innerText = 'paejo'
     fetchData()
     }
