@@ -15,7 +15,7 @@ submitButton.addEventListener('click', function(){
         alert('Neįvestas miesto pavadinimas!')
     }else {
     
-    document.getElementById('paejo').innerText = 'paejo'
+    document.getElementById('paejo').innerText = ''
     fetchData()
     }
     

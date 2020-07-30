@@ -1,6 +1,6 @@
-@import 'styles/header.css';
-@import 'styles/cards.css';
-@import 'styles/show-more.css';
+@import './styles/header.css';
+@import './styles/cards.css';
+@import './styles/show-more.css';
 
 body{
     margin: 0;
