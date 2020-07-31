@@ -1,4 +1,4 @@
-import {submitButton} from './submitButton.js'
+import {submitButton, apiArr} from './submitButton.js'
 const units = 'metric'
 const cityName = document.querySelector('input')
 
@@ -13,12 +13,9 @@ const fetchData = () => {
             
         })
         .then(function(body) {
-            var fruits = ["Banana", "Orange", "Apple", "Mango"];
-            fruits.push("Kiwi");
-            console.log(fruits)
             const inputValue = document.querySelector('#search')
             inputValue.value = ''
-
+            console.log(apiArr)
             const date = new Date
             const del = date.getTime()
             
@@ -100,6 +97,11 @@ const fetchData = () => {
                 infoUl.appendChild(infoLi4)
                 infoUl.appendChild(infoLi5)
                 infoUl.appendChild(infoLi6)
+
+                
+
+
+
                 
                 const showMore = document.querySelector('.show-more')
                 const c = document.querySelector('.output').childElementCount;
@@ -119,7 +121,10 @@ const fetchData = () => {
                     
                 }
                 showMoreHide()
-
+                let a = city
+                a = a.toLowerCase()
+                const ac = apiArr.indexOf(a)
+                console.log(ac)
                 showMoreBtn.addEventListener('click', function(){
                     body.style.overflow = "auto"
                     showMore.style.height = "0px"
@@ -127,7 +132,8 @@ const fetchData = () => {
                 })
                 deleteBtn.addEventListener('click', function(){
                     cityInfo.remove()
-                    
+                    apiArr.splice(ac, 1, "")
+                    console.log(apiArr)
                 })
 
             }

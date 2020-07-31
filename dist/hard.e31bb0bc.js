@@ -123,7 +123,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.submitButton = void 0;
+exports.submitButton = exports.apiArr = void 0;
 
 var _fetchData = require("./fetchData.js");
 
@@ -131,26 +131,32 @@ var cityName = document.querySelector('input');
 var submitButton = document.querySelector('button');
 exports.submitButton = submitButton;
 var loader = document.querySelector('.loader');
+var apiArr = [];
+exports.apiArr = apiArr;
 submitButton.addEventListener('click', function () {
-  var badDate = new Date();
-  var superDate = badDate.getTime();
-
   if (cityName.value == "") {
     alert('Neįvestas miesto pavadinimas!');
-  } else {
+  } else if (apiArr.includes(cityName.value) == true && cityName.value !== "") {
+    alert('Šio miesto duomenys jau ekrane :)');
+  } else if (apiArr == null || apiArr.includes(cityName.value) !== true) {
     submit.style.display = "none";
     loader.style.display = "block";
+    var cardDel = cityName.value;
+    apiArr.push(cardDel);
     (0, _fetchData.fetchData)();
   }
 });
 cityName.addEventListener('keyup', function (event) {
   if (cityName.value == "" && event.keyCode === 13) {
     alert('Neįvestas miesto pavadinimas!');
-  } else if (event.keyCode === 13) {
+  } else if (apiArr.includes(cityName.value) == true && cityName.value !== "" && event.keyCode === 13) {
+    alert('Šio miesto duomenys jau ekrane :)');
+  } else if ((apiArr.includes(cityName.value) !== true || apiArr == null) && event.keyCode === 13) {
     submit.style.display = "none";
     loader.style.display = "block";
     (0, _fetchData.fetchData)();
-    event.preventDefault();
+    var cardDel = cityName.value;
+    apiArr.push(cardDel);
   }
 });
 },{"./fetchData.js":"api/fetchData.js"}],"api/fetchData.js":[function(require,module,exports) {
@@ -170,11 +176,9 @@ var fetchData = function fetchData() {
   fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(cityName.value, "&units=").concat(units, "&appid=93222b93865e98e9f99d18eaf4715fbb")).then(function (response) {
     return response.json();
   }).then(function (body) {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
-    fruits.push("Kiwi");
-    console.log(fruits);
     var inputValue = document.querySelector('#search');
     inputValue.value = '';
+    console.log(_submitButton.apiArr);
     var date = new Date();
     var del = date.getTime();
     var city1 = JSON.stringify(body.name);
@@ -255,6 +259,12 @@ var fetchData = function fetchData() {
       }
 
       showMoreHide();
+      var a = city;
+      a = a.toLowerCase();
+
+      var ac = _submitButton.apiArr.indexOf(a);
+
+      console.log(ac);
       showMoreBtn.addEventListener('click', function () {
         body.style.overflow = "auto";
         showMore.style.height = "0px";
@@ -262,6 +272,10 @@ var fetchData = function fetchData() {
       });
       deleteBtn.addEventListener('click', function () {
         cityInfo.remove();
+
+        _submitButton.apiArr.splice(ac, 1, "");
+
+        console.log(_submitButton.apiArr);
       });
     }
 
@@ -308,7 +322,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58799" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50250" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
