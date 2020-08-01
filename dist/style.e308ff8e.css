@@ -12,6 +12,11 @@
 h1{
     width: 75%;
 }
+.nav{
+    display: flex;
+    width: 10%;
+    justify-content: space-around;
+}
 #git{
     display: flex;
     flex-direction: column;
