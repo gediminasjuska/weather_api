@@ -106,6 +106,9 @@ input::-moz-focus-outer{
         justify-content: center;
         margin-top: 40px;
     }
+    .output{
+        justify-content: center;
+    }
 }
 @media (max-width: 450px){
     .header{

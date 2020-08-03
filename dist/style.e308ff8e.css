@@ -94,7 +94,7 @@ li:nth-child(1){
 }
 .show-more{
     position: absolute;
-    width: 1200px;
+    width: 100%;
     bottom: 0;
     transition: 0.3s all;
     overflow: hidden;
@@ -225,6 +225,9 @@ input::-moz-focus-outer{
         display: flex;
         justify-content: center;
         margin-top: 40px;
+    }
+    .output{
+        justify-content: center;
     }
 }
 @media (max-width: 450px){

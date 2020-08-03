@@ -1,5 +1,4 @@
-import {apiArr} from './submitButton.js'
-
+let apiArr = []
 
 const units = 'metric'
 const cityName = document.querySelector('input')
@@ -113,12 +112,12 @@ const fetchData = () => {
                         showMore.style.height = "220px"
                         }
                     }
-                    // else if(document.querySelector('.find-city').elmnt.offsetWidth  > "450px"){
-                    //     if(c === 4){
-                    //     body.style.overflow = "hidden"
-                    //     showMore.style.height = "220px"
-                    //     }
-                    // }
+                    else if(w < 900 && w > 450){
+                        if(c > 4){
+                        body.style.overflow = "hidden"
+                        showMore.style.height = "220px"
+                        }
+                    }
                     else if(w < 900 && w <= 450){
                         if( c === 2){
                         body.style.overflow = "hidden"
@@ -138,7 +137,9 @@ const fetchData = () => {
                 })
                 deleteBtn.addEventListener('click', function(){
                     cityInfo.remove()
-                    apiArr.splice(ac, 1, "")
+                    apiArr = apiArr.filter(function(name){
+                        return name !== a
+                    })
                 })
 
             }
@@ -152,5 +153,7 @@ const fetchData = () => {
         })
 }
 
-export {fetchData}
+export {fetchData, apiArr}
+
+
 

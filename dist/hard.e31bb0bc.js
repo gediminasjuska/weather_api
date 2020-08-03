@@ -117,58 +117,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"api/submitButton.js":[function(require,module,exports) {
+})({"api/fetchData.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.submitButton = exports.apiArr = void 0;
-
-var _fetchData = require("./fetchData.js");
-
-var cityName = document.querySelector('input');
-var submitButton = document.querySelector('button');
-exports.submitButton = submitButton;
-var loader = document.querySelector('.loader');
+exports.apiArr = exports.fetchData = void 0;
 var apiArr = [];
 exports.apiArr = apiArr;
-submitButton.addEventListener('click', function () {
-  if (cityName.value == "") {
-    alert('Neįvestas miesto pavadinimas!');
-  } else if (apiArr.includes(cityName.value) == true && cityName.value !== "") {
-    alert('Šio miesto duomenys jau ekrane :)');
-  } else if (apiArr == null || apiArr.includes(cityName.value) !== true) {
-    submit.style.display = "none";
-    loader.style.display = "block";
-    var cardDel = cityName.value;
-    apiArr.push(cardDel);
-    (0, _fetchData.fetchData)();
-  }
-});
-cityName.addEventListener('keyup', function (event) {
-  if (cityName.value == "" && event.keyCode === 13) {
-    alert('Neįvestas miesto pavadinimas!');
-  } else if (apiArr.includes(cityName.value) == true && cityName.value !== "" && event.keyCode === 13) {
-    alert('Šio miesto duomenys jau ekrane :)');
-  } else if ((apiArr.includes(cityName.value) !== true || apiArr == null) && event.keyCode === 13) {
-    submit.style.display = "none";
-    loader.style.display = "block";
-    (0, _fetchData.fetchData)();
-    var cardDel = cityName.value;
-    apiArr.push(cardDel);
-  }
-});
-},{"./fetchData.js":"api/fetchData.js"}],"api/fetchData.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.fetchData = void 0;
-
-var _submitButton = require("./submitButton.js");
-
 var units = 'metric';
 var cityName = document.querySelector('input');
 
@@ -178,7 +135,7 @@ var fetchData = function fetchData() {
   }).then(function (body) {
     var inputValue = document.querySelector('#search');
     inputValue.value = '';
-    console.log(_submitButton.apiArr);
+    console.log(apiArr);
     var date = new Date();
     var del = date.getTime();
     var city1 = JSON.stringify(body.name);
@@ -259,26 +216,23 @@ var fetchData = function fetchData() {
             body.style.overflow = "hidden";
             showMore.style.height = "220px";
           }
-        } // else if(document.querySelector('.find-city').elmnt.offsetWidth  > "450px"){
-        //     if(c === 4){
-        //     body.style.overflow = "hidden"
-        //     showMore.style.height = "220px"
-        //     }
-        // }
-        else if (w < 900 && w <= 450) {
-            if (c === 2) {
-              body.style.overflow = "hidden";
-              showMore.style.height = "220px";
-            }
+        } else if (w < 900 && w > 450) {
+          if (c > 4) {
+            body.style.overflow = "hidden";
+            showMore.style.height = "220px";
           }
+        } else if (w < 900 && w <= 450) {
+          if (c === 2) {
+            body.style.overflow = "hidden";
+            showMore.style.height = "220px";
+          }
+        }
       }
 
       showMoreHide();
       var a = city;
       a = a.toLowerCase();
-
-      var ac = _submitButton.apiArr.indexOf(a);
-
+      var ac = apiArr.indexOf(a);
       showMoreBtn.addEventListener('click', function () {
         body.style.overflow = "auto";
         showMore.style.height = "0px";
@@ -286,8 +240,9 @@ var fetchData = function fetchData() {
       });
       deleteBtn.addEventListener('click', function () {
         cityInfo.remove();
-
-        _submitButton.apiArr.splice(ac, 1, "");
+        exports.apiArr = apiArr = apiArr.filter(function (name) {
+          return name !== a;
+        });
       });
     }
 
@@ -300,7 +255,50 @@ var fetchData = function fetchData() {
 };
 
 exports.fetchData = fetchData;
-},{"./submitButton.js":"api/submitButton.js"}],"index.js":[function(require,module,exports) {
+},{}],"api/submitButton.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.submitButton = void 0;
+
+var _fetchData = require("./fetchData.js");
+
+var cityName = document.querySelector('input');
+var submitButton = document.querySelector('button');
+exports.submitButton = submitButton;
+var loader = document.querySelector('.loader');
+submitButton.addEventListener('click', function () {
+  if (cityName.value == "") {
+    alert('Neįvestas miesto pavadinimas!');
+  } else if (_fetchData.apiArr.includes(cityName.value) == true && cityName.value !== "") {
+    alert('Šio miesto duomenys jau ekrane :)');
+  } else if (_fetchData.apiArr == null || _fetchData.apiArr.includes(cityName.value) !== true) {
+    submit.style.display = "none";
+    loader.style.display = "block";
+    var cardDel = cityName.value;
+
+    _fetchData.apiArr.push(cardDel);
+
+    (0, _fetchData.fetchData)();
+  }
+});
+cityName.addEventListener('keyup', function (event) {
+  if (cityName.value == "" && event.keyCode === 13) {
+    alert('Neįvestas miesto pavadinimas!');
+  } else if (_fetchData.apiArr.includes(cityName.value) == true && cityName.value !== "" && event.keyCode === 13) {
+    alert('Šio miesto duomenys jau ekrane :)');
+  } else if ((_fetchData.apiArr.includes(cityName.value) !== true || _fetchData.apiArr == null) && event.keyCode === 13) {
+    submit.style.display = "none";
+    loader.style.display = "block";
+    (0, _fetchData.fetchData)();
+    var cardDel = cityName.value;
+
+    _fetchData.apiArr.push(cardDel);
+  }
+});
+},{"./fetchData.js":"api/fetchData.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _fetchData = require("./api/fetchData.js");
