@@ -9,6 +9,10 @@
     justify-content: center;
     z-index: 1;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 h1{
     width: 75%;
 }

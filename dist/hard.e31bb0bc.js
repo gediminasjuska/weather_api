@@ -135,7 +135,6 @@ var fetchData = function fetchData() {
   }).then(function (body) {
     var inputValue = document.querySelector('#search');
     inputValue.value = '';
-    console.log(apiArr);
     var date = new Date();
     var del = date.getTime();
     var city1 = JSON.stringify(body.name);
@@ -208,7 +207,6 @@ var fetchData = function fetchData() {
       inputValue.value = '';
       var w = window.innerWidth;
       var h = window.innerHeight;
-      console.log("lango plotis", h % 3);
       var showMoreValue = true;
 
       function showMoreHide() {

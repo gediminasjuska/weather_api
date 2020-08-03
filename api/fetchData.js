@@ -16,7 +16,6 @@ const fetchData = () => {
         .then(function(body) {
             const inputValue = document.querySelector('#search')
             inputValue.value = ''
-            console.log(apiArr)
             const date = new Date
             const del = date.getTime()
             
@@ -104,7 +103,7 @@ const fetchData = () => {
 
                 let w = window.innerWidth
                 let h = window.innerHeight
-                console.log("lango plotis", h%3)
+                
                 let showMoreValue = true
                 function showMoreHide(){
                     if(w >= 900){
