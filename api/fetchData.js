@@ -103,11 +103,27 @@ const fetchData = () => {
                 const inputValue = document.querySelector('#search')
                 inputValue.value = ''
 
+                let w = window.innerWidth
+                console.log("lango plotis", w)
                 let showMoreValue = true
                 function showMoreHide(){
-                    if( c === 7 ){
+                    if(w >= 900){
+                        if( c === 7){
                         body.style.overflow = "hidden"
                         showMore.style.height = "220px"
+                        }
+                    }
+                    // else if(document.querySelector('.find-city').elmnt.offsetWidth  > "450px"){
+                    //     if(c === 4){
+                    //     body.style.overflow = "hidden"
+                    //     showMore.style.height = "220px"
+                    //     }
+                    // }
+                    else if(w < 900 && w <= 450){
+                        if( c === 2){
+                        body.style.overflow = "hidden"
+                        showMore.style.height = "220px"
+                        }
                     }
                     
                 }

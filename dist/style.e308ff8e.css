@@ -241,6 +241,12 @@ input::-moz-focus-outer{
     #search{
         font-size: 25px;
     }
+    .github{
+        display: none;
+    }
+    .output{
+        justify-content: center;
+    }
 }
 
 
