@@ -207,24 +207,25 @@ var fetchData = function fetchData() {
       var inputValue = document.querySelector('#search');
       inputValue.value = '';
       var w = window.innerWidth;
-      console.log("lango plotis", w);
+      var h = window.innerHeight;
+      console.log("lango plotis", h % 3);
       var showMoreValue = true;
 
       function showMoreHide() {
         if (w >= 900) {
           if (c === 7) {
             body.style.overflow = "hidden";
-            showMore.style.height = "220px";
+            showMore.style.height = "".concat(h / 2, "px");
           }
         } else if (w < 900 && w > 450) {
           if (c > 4) {
             body.style.overflow = "hidden";
-            showMore.style.height = "220px";
+            showMore.style.height = "".concat(h / 2, "px");
           }
         } else if (w < 900 && w <= 450) {
           if (c === 2) {
             body.style.overflow = "hidden";
-            showMore.style.height = "220px";
+            showMore.style.height = "".concat(h / 2, "px");
           }
         }
       }

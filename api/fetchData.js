@@ -103,25 +103,26 @@ const fetchData = () => {
                 inputValue.value = ''
 
                 let w = window.innerWidth
-                console.log("lango plotis", w)
+                let h = window.innerHeight
+                console.log("lango plotis", h%3)
                 let showMoreValue = true
                 function showMoreHide(){
                     if(w >= 900){
                         if( c === 7){
                         body.style.overflow = "hidden"
-                        showMore.style.height = "220px"
+                        showMore.style.height = `${h/2}px`
                         }
                     }
                     else if(w < 900 && w > 450){
                         if(c > 4){
                         body.style.overflow = "hidden"
-                        showMore.style.height = "220px"
+                        showMore.style.height = `${h/2}px`
                         }
                     }
                     else if(w < 900 && w <= 450){
                         if( c === 2){
                         body.style.overflow = "hidden"
-                        showMore.style.height = "220px"
+                        showMore.style.height = `${h/2}px`
                         }
                     }
                     

@@ -101,7 +101,7 @@ li:nth-child(1){
     height: 0px;
 }
 .show-more-top{
-    height: 65px;
+    height: 7%;
     background-color: #b5ddff;
     opacity: 90%;
     text-align: center;
@@ -110,7 +110,7 @@ li:nth-child(1){
 .show-more-bottom{
     background-color: #b5ddff;
     z-index: 34;
-    height: 155px;
+    height: 93%;
 }
 .show_more_btn{
     background-color: unset;
