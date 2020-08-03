@@ -1,4 +1,6 @@
-import {submitButton, apiArr} from './submitButton.js'
+import {apiArr} from './submitButton.js'
+
+
 const units = 'metric'
 const cityName = document.querySelector('input')
 
@@ -35,9 +37,6 @@ const fetchData = () => {
             document.querySelector('#submit').style.display = 'block'  
 
 
-            
-
-
             const iconLink = `http://openweathermap.org/img/wn/${weatherIcon}.png`
             const weatherImage1 = document.createElement('img')
             const weatherImage2 = document.createElement('img')
@@ -51,9 +50,7 @@ const fetchData = () => {
             weatherImage2.setAttribute('id', 'weatherId')
             weatherImage3.setAttribute('id', 'weatherId')
             weatherImage4.setAttribute('id', 'weatherId')
-            
-            
-            
+        
 
             const output = document.querySelector('.output')
             function newCityWeather(){
@@ -67,8 +64,7 @@ const fetchData = () => {
                 const infoLi5 = document.createElement('li')
                 const infoLi6 = document.createElement('li')
                 
-                
-
+            
                 cityInfo.setAttribute('class', 'card')
                 const cardId = 'delete' + del
                 deleteBtn.setAttribute('id', 'deleteBtn')
@@ -83,7 +79,6 @@ const fetchData = () => {
                 infoLi6.innerHTML = `Retrieved on: ${date}`
 
                 infoLi1.setAttribute('id', 'miestas')
-                
 
                 output.appendChild(cityInfo)
                 cityInfo.appendChild(deleteBtn)
@@ -98,11 +93,7 @@ const fetchData = () => {
                 infoUl.appendChild(infoLi5)
                 infoUl.appendChild(infoLi6)
 
-                
 
-
-
-                
                 const showMore = document.querySelector('.show-more')
                 const c = document.querySelector('.output').childElementCount;
                 const body = document.querySelector('body')
@@ -124,7 +115,6 @@ const fetchData = () => {
                 let a = city
                 a = a.toLowerCase()
                 const ac = apiArr.indexOf(a)
-                console.log(ac)
                 showMoreBtn.addEventListener('click', function(){
                     body.style.overflow = "auto"
                     showMore.style.height = "0px"
@@ -133,7 +123,6 @@ const fetchData = () => {
                 deleteBtn.addEventListener('click', function(){
                     cityInfo.remove()
                     apiArr.splice(ac, 1, "")
-                    console.log(apiArr)
                 })
 
             }

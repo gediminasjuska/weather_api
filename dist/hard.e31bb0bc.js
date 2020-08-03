@@ -264,7 +264,6 @@ var fetchData = function fetchData() {
 
       var ac = _submitButton.apiArr.indexOf(a);
 
-      console.log(ac);
       showMoreBtn.addEventListener('click', function () {
         body.style.overflow = "auto";
         showMore.style.height = "0px";
@@ -274,8 +273,6 @@ var fetchData = function fetchData() {
         cityInfo.remove();
 
         _submitButton.apiArr.splice(ac, 1, "");
-
-        console.log(_submitButton.apiArr);
       });
     }
 
@@ -322,7 +319,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57952" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62055" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

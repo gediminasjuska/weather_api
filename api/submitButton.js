@@ -30,7 +30,9 @@ submitButton.addEventListener('click', function(){
 cityName.addEventListener('keyup', function(event){
          
         if (cityName.value == "" && event.keyCode === 13){
+
             alert('Neįvestas miesto pavadinimas!')
+            
         }
         else if (apiArr.includes(cityName.value) == true &&  cityName.value !== "" && event.keyCode === 13){
         

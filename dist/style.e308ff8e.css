@@ -14,7 +14,7 @@ h1{
 }
 .nav{
     display: flex;
-    width: 10%;
+    width: 150px;
     justify-content: space-around;
 }
 #git{
@@ -206,6 +206,42 @@ input::-moz-focus-outer{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+@media (max-width: 900px){
+    .find-city{
+        flex-direction: column;
+
+    }
+    .search-box{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #search{
+        width: 80%;
+        text-align: center;
+    }
+    .search-button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+}
+@media (max-width: 450px){
+    .header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 105px;
+    }
+    h1{
+        margin: 5px 0px 5px 0px;
+        text-align: center;
+    }
+    #search{
+        font-size: 25px;
+    }
+}
 
 
 

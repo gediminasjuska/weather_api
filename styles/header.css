@@ -14,7 +14,7 @@ h1{
 }
 .nav{
     display: flex;
-    width: 10%;
+    width: 150px;
     justify-content: space-around;
 }
 #git{
