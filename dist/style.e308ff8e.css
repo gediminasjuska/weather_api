@@ -89,13 +89,15 @@ li:nth-child(1){
     margin-right: 8px;
     margin-top: 8px;
     cursor: pointer;
-    
+}
+#deleteBtn:hover{
+    background-color: red;
 }
 .card:hover{
     height: 215px;
     transition: 0.3s ;
-    
 }
+
 .show-more{
     position: absolute;
     width: 100%;
@@ -213,7 +215,6 @@ input::-moz-focus-outer{
 @media (max-width: 960px){
     .find-city{
         flex-direction: column;
-
     }
     .search-box{
         width: 100%;

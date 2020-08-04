@@ -89,7 +89,6 @@ input::-moz-focus-outer{
 @media (max-width: 960px){
     .find-city{
         flex-direction: column;
-
     }
     .search-box{
         width: 100%;

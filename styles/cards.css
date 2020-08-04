@@ -49,10 +49,11 @@ li:nth-child(1){
     margin-right: 8px;
     margin-top: 8px;
     cursor: pointer;
-    
+}
+#deleteBtn:hover{
+    background-color: red;
 }
 .card:hover{
     height: 215px;
     transition: 0.3s ;
-    
 }

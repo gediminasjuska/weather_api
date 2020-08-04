@@ -64,7 +64,6 @@ const fetchData = () => {
                 
             
                 cityInfo.setAttribute('class', 'card')
-                const cardId = 'delete' + del
                 deleteBtn.setAttribute('id', 'deleteBtn')
                 infoLi1.innerHTML = city
                 infoLi2.innerHTML = weatherImage1
@@ -129,7 +128,6 @@ const fetchData = () => {
                 showMoreHide()
                 let a = city
                 a = a.toLowerCase()
-                const ac = apiArr.indexOf(a)
                 showMoreBtn.addEventListener('click', function(){
                     body.style.overflow = "auto"
                     showMore.style.height = "0px"

@@ -175,7 +175,6 @@ var fetchData = function fetchData() {
       var infoLi5 = document.createElement('li');
       var infoLi6 = document.createElement('li');
       cityInfo.setAttribute('class', 'card');
-      var cardId = 'delete' + del;
       deleteBtn.setAttribute('id', 'deleteBtn');
       infoLi1.innerHTML = city;
       infoLi2.innerHTML = weatherImage1;
@@ -231,7 +230,6 @@ var fetchData = function fetchData() {
       showMoreHide();
       var a = city;
       a = a.toLowerCase();
-      var ac = apiArr.indexOf(a);
       showMoreBtn.addEventListener('click', function () {
         body.style.overflow = "auto";
         showMore.style.height = "0px";
@@ -331,7 +329,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62055" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53919" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
