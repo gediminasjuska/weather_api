@@ -19,17 +19,11 @@ const fetchData = () => {
             const date = new Date
             const del = date.getTime()
             
-            const city1 = JSON.stringify(body.name)
-            const temp1 = JSON.stringify(body.main.temp)
-            const humidity1 = JSON.stringify(body.main.humidity)
-            const weather1 = JSON.stringify(body.weather[0].description)
-            const weatherIcon1 = JSON.stringify(body.weather[0].icon)
-
-            let city = JSON.parse(city1)
-            let temp = JSON.parse(temp1)
-            let humidity = JSON.parse(humidity1)
-            let weather = JSON.parse(weather1)
-            let weatherIcon = JSON.parse(weatherIcon1)
+            let city = (body.name)
+            let temp = (body.main.temp)
+            let humidity = (body.main.humidity)
+            let weather = (body.weather[0].description)
+            let weatherIcon = (body.weather[0].icon)
             
             document.querySelector('.loader').style.display = 'none'
             document.querySelector('#submit').style.display = 'block'  

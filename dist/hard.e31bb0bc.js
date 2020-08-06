@@ -137,16 +137,11 @@ var fetchData = function fetchData() {
     inputValue.value = '';
     var date = new Date();
     var del = date.getTime();
-    var city1 = JSON.stringify(body.name);
-    var temp1 = JSON.stringify(body.main.temp);
-    var humidity1 = JSON.stringify(body.main.humidity);
-    var weather1 = JSON.stringify(body.weather[0].description);
-    var weatherIcon1 = JSON.stringify(body.weather[0].icon);
-    var city = JSON.parse(city1);
-    var temp = JSON.parse(temp1);
-    var humidity = JSON.parse(humidity1);
-    var weather = JSON.parse(weather1);
-    var weatherIcon = JSON.parse(weatherIcon1);
+    var city = body.name;
+    var temp = body.main.temp;
+    var humidity = body.main.humidity;
+    var weather = body.weather[0].description;
+    var weatherIcon = body.weather[0].icon;
     document.querySelector('.loader').style.display = 'none';
     document.querySelector('#submit').style.display = 'block';
     var iconLink = "http://openweathermap.org/img/wn/".concat(weatherIcon, ".png");
@@ -329,7 +324,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53919" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58499" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
